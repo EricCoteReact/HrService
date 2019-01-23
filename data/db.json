@@ -1,0 +1,15 @@
+{
+  "ids": {
+    "Employee": 7
+  },
+  "models": {
+    "Employee": {
+      "1": "{\"id\":1,\"firstName\":\"Hyesung\",\"lastName\":\"Park\"}",
+      "2": "{\"id\":2,\"firstName\":\"Cody\",\"lastName\":\"Lucas\"}",
+      "3": "{\"id\":3,\"firstName\":\"Hyesung\",\"lastName\":\"Park\"}",
+      "4": "{\"id\":4,\"firstName\":\"Peter\",\"lastName\":\"MacDonald\"}",
+      "5": "{\"id\":5,\"firstName\":\"Ryan\",\"lastName\":\"Prayogo\"}",
+      "6": "{\"id\":6,\"firstName\":\"Sharan\",\"lastName\":\"Mahesan\"}"
+    }
+  }
+}
