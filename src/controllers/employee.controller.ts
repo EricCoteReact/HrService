@@ -16,20 +16,20 @@ import {
   del,
   requestBody,
 } from '@loopback/rest';
-import {Employee} from '../models';
-import {EmployeeRepository} from '../repositories';
+import { Employee } from '../models';
+import { EmployeeRepository } from '../repositories';
 
 export class EmployeeController {
   constructor(
     @repository(EmployeeRepository)
-    public employeeRepository : EmployeeRepository,
-  ) {}
+    public employeeRepository: EmployeeRepository,
+  ) { }
 
   @post('/employees', {
     responses: {
       '200': {
         description: 'Employee model instance',
-        content: {'application/json': {schema: {'x-ts-type': Employee}}},
+        content: { 'application/json': { schema: { 'x-ts-type': Employee } } },
       },
     },
   })
@@ -41,7 +41,7 @@ export class EmployeeController {
     responses: {
       '200': {
         description: 'Employee model count',
-        content: {'application/json': {schema: CountSchema}},
+        content: { 'application/json': { schema: CountSchema } },
       },
     },
   })
@@ -51,18 +51,18 @@ export class EmployeeController {
     return await this.employeeRepository.count(where);
   }
 
-  @get('/employees', {
-    responses: {
-      '200': {
-        description: 'Array of Employee model instances',
-        content: {
-          'application/json': {
-            schema: {type: 'array', items: {'x-ts-type': Employee}},
-          },
-        },
-      },
-    },
-  })
+  // @get('/employees', {
+  //   responses: {
+  //     '200': {
+  //       description: 'Array of Employee model instances',
+  //       content: {
+  //         'application/json': {
+  //           schema: {type: 'array', items: {'x-ts-type': Employee}},
+  //         },
+  //       },
+  //     },
+  //   },
+  // })
   // async find(
   //   @param.query.object('filter', getFilterSchemaFor(Employee)) filter?: Filter,
   // ): Promise<Employee[]> {
@@ -73,7 +73,7 @@ export class EmployeeController {
     responses: {
       '200': {
         description: 'Employee PATCH success count',
-        content: {'application/json': {schema: CountSchema}},
+        content: { 'application/json': { schema: CountSchema } },
       },
     },
   })
@@ -88,7 +88,7 @@ export class EmployeeController {
     responses: {
       '200': {
         description: 'Employee model instance',
-        content: {'application/json': {schema: {'x-ts-type': Employee}}},
+        content: { 'application/json': { schema: { 'x-ts-type': Employee } } },
       },
     },
   })
