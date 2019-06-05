@@ -63,11 +63,11 @@ export class EmployeeController {
       },
     },
   })
-  async find(
-    @param.query.object('filter', getFilterSchemaFor(Employee)) filter?: Filter,
-  ): Promise<Employee[]> {
-    return await this.employeeRepository.find(filter);
-  }
+  // async find(
+  //   @param.query.object('filter', getFilterSchemaFor(Employee)) filter?: Filter,
+  // ): Promise<Employee[]> {
+  //   return await this.employeeRepository.find(filter);
+  // }
 
   @patch('/employees', {
     responses: {
