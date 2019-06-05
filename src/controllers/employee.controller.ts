@@ -51,23 +51,21 @@ export class EmployeeController {
     return await this.employeeRepository.count(where);
   }
 
-  // @get('/employees', {
-  //   responses: {
-  //     '200': {
-  //       description: 'Array of Employee model instances',
-  //       content: {
-  //         'application/json': {
-  //           schema: {type: 'array', items: {'x-ts-type': Employee}},
-  //         },
-  //       },
-  //     },
-  //   },
-  // })
-  // async find(
-  //   @param.query.object('filter', getFilterSchemaFor(Employee)) filter?: Filter,
-  // ): Promise<Employee[]> {
-  //   return await this.employeeRepository.find(filter);
-  // }
+  @get('/employees', {
+    responses: {
+      '200': {
+        description: 'Array of Employee model instances',
+        content: {
+          'application/json': {
+            schema: { type: 'array', items: { 'x-ts-type': Employee } },
+          },
+        },
+      },
+    },
+  })
+  async find(): Promise<Employee[]> {
+    return await this.employeeRepository.find();
+  }
 
   @patch('/employees', {
     responses: {
