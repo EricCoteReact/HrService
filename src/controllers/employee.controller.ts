@@ -46,7 +46,7 @@ export class EmployeeController {
     },
   })
   async count(
-    @param.query.object('where', getWhereSchemaFor(Employee)) where?: Where,
+    @param.query.object('where', getWhereSchemaFor(Employee)) where?: Where<Employee>,
   ): Promise<Count> {
     return await this.employeeRepository.count(where);
   }
@@ -64,7 +64,7 @@ export class EmployeeController {
     },
   })
   async find(
-    @param.query.object('filter', getFilterSchemaFor(Employee)) filter?: Filter,
+    @param.query.object('filter', getFilterSchemaFor(Employee)) filter?: Filter<Employee>,
   ): Promise<Employee[]> {
     return await this.employeeRepository.find(filter);
   }
@@ -79,7 +79,7 @@ export class EmployeeController {
   })
   async updateAll(
     @requestBody() employee: Employee,
-    @param.query.object('where', getWhereSchemaFor(Employee)) where?: Where,
+    @param.query.object('where', getWhereSchemaFor(Employee)) where?: Where<Employee>,
   ): Promise<Count> {
     return await this.employeeRepository.updateAll(employee, where);
   }

@@ -4,12 +4,13 @@
   },
   "models": {
     "Employee": {
-      "1": "{\"id\":1,\"firstName\":\"Eric\",\"lastName\":\"CÃ´tÃ©\"}",
+      "1": "{\"id\":1,\"firstName\":\"Eric\",\"lastName\":\"Côté\"}",
       "2": "{\"id\":2,\"firstName\":\"Satya\",\"lastName\":\"Nadella\"}",
       "3": "{\"id\":3,\"firstName\":\"Mark\",\"lastName\":\"Zuckerberg\"}",
       "4": "{\"id\":4,\"firstName\":\"Jeff\",\"lastName\":\"Bezos\"}",
       "5": "{\"id\":5,\"firstName\":\"Tim\",\"lastName\":\"Cook\"}",
       "6": "{\"id\":6,\"firstName\":\"Sundar\",\"lastName\":\"Pichai\"}"
     }
+  }
   }
 }

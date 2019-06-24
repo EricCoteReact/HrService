@@ -1,10 +1,10 @@
-import {HrSvc} from './application';
+import {HrserviceApplication} from './application';
 
 export async function migrate(args: string[]) {
   const existingSchema = args.includes('--rebuild') ? 'drop' : 'alter';
   console.log('Migrating schemas (%s existing schema)', existingSchema);
 
-  const app = new HrSvc();
+  const app = new HrserviceApplication();
   await app.boot();
   await app.migrateSchema({existingSchema});
 

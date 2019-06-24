@@ -1,7 +1,6 @@
-# hrsvc
+# hrservice
 
 [![LoopBack](https://github.com/strongloop/loopback-next/raw/master/docs/site/imgs/branding/Powered-by-LoopBack-Badge-(blue)-@2x.png)](http://loopback.io/)
-
 
 
 
@@ -27,11 +26,13 @@ lb4 datasource
 ? window.localStorage key to use for persistence (browser only):
 ? Full path to file for persistence (server only): ./data/db.json
 
-------put some data in ./data/db.json
+------create empty file:  ./data/db.json  
 
 lb4 repository
 ? Please select the datasource DbDatasource
-? Select the model(s) you want to generate a repository Todo
+? Select the model(s) you want to generate a repository Employee
+? Please select the repository base class
+> DefaultCrudRepository
 
 
 
@@ -45,7 +46,4 @@ lb4 controller
 ? What is the type of your ID? number
 ? What is the base HTTP path name of the CRUD operations? /employees
 
-
-
-
-
+Change port from 3000 to 3001 in index.js

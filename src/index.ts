@@ -1,10 +1,10 @@
-import {HrSvc} from './application';
+import {HrserviceApplication} from './application';
 import {ApplicationConfig} from '@loopback/core';
 
-export {HrSvc};
+export {HrserviceApplication};
 
 export async function main(options: ApplicationConfig = {}) {
-  const app = new HrSvc(options);
+  const app = new HrserviceApplication(options);
   await app.boot();
   await app.start();
 

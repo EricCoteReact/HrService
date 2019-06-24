@@ -1,6 +1,6 @@
 import {Entity, model, property} from '@loopback/repository';
 
-@model()
+@model({settings: {}})
 export class Employee extends Entity {
   @property({
     type: 'number',
@@ -11,8 +11,9 @@ export class Employee extends Entity {
 
   @property({
     type: 'string',
+    required: true,
   })
-  firstName?: string;
+  firstName: string;
 
   @property({
     type: 'string',
@@ -24,3 +25,9 @@ export class Employee extends Entity {
     super(data);
   }
 }
+
+export interface EmployeeRelations {
+  // describe navigational properties here
+}
+
+export type EmployeeWithRelations = Employee & EmployeeRelations;
