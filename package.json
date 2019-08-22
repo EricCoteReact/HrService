@@ -1,6 +1,9 @@
 {
   "name": "hrservice",
   "version": "1.0.0",
+  "installConfig": {
+    "pnp": false
+  },
   "description": "HR Service",
   "keywords": [
     "loopback-application",
@@ -32,7 +35,7 @@
     "type": "git"
   },
   "author": "",
-  "license": "",
+  "license": "MIT",
   "files": [
     "README.md",
     "index.js",
@@ -53,11 +56,11 @@
   },
   "devDependencies": {
     "@loopback/build": "^2.0.6",
-    "@loopback/eslint-config": "^3.0.0",
+    "@loopback/eslint-config": "^4.0.1",
     "@loopback/testlab": "^1.7.2",
     "@types/node": "^12.7.1",
-    "@typescript-eslint/eslint-plugin": "^1.13.0",
-    "@typescript-eslint/parser": "^1.13.0",
+    "@typescript-eslint/eslint-plugin": "^2.0.0",
+    "@typescript-eslint/parser": "^2.0.0",
     "eslint": "^6.1.0",
     "eslint-config-prettier": "^6.0.0",
     "eslint-plugin-eslint-plugin": "^2.1.0",
