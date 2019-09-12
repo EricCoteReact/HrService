@@ -20,6 +20,11 @@ export class Employee extends Entity {
   })
   lastName?: string;
 
+  @property({
+    type: 'string',
+  })
+  email?: string;
+
 
   constructor(data?: Partial<Employee>) {
     super(data);
