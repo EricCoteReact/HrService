@@ -10,6 +10,7 @@ import {
   param,
   get,
   getFilterSchemaFor,
+  getModelSchemaRef,
   getWhereSchemaFor,
   patch,
   put,
@@ -29,18 +30,30 @@ export class ContactController {
     responses: {
       '200': {
         description: 'Contact model instance',
-        content: {'application/json': {schema: {'x-ts-type': Contact}}},
+        content: {'application/json': {schema: getModelSchemaRef(Contact)}},
       },
     },
   })
-  async create(@requestBody() contact: Contact): Promise<Contact> {
-    return await this.contactRepository.create(contact);
+  async create(
+    @requestBody({
+      content: {
+        'application/json': {
+          schema: getModelSchemaRef(Contact, {
+            title: 'NewContact',
+            exclude: ['id'],
+          }),
+        },
+      },
+    })
+    contact: Omit<Contact, 'id'>,
+  ): Promise<Contact> {
+    return this.contactRepository.create(contact);
   }
 
   @get('/contacts/count', {
     responses: {
       '200': {
-        description: 'contact model count',
+        description: 'Contact model count',
         content: {'application/json': {schema: CountSchema}},
       },
     },
@@ -49,16 +62,19 @@ export class ContactController {
     @param.query.object('where', getWhereSchemaFor(Contact))
     where?: Where<Contact>,
   ): Promise<Count> {
-    return await this.contactRepository.count(where);
+    return this.contactRepository.count(where);
   }
 
   @get('/contacts', {
     responses: {
       '200': {
-        description: 'Array of Contacts',
+        description: 'Array of Contact model instances',
         content: {
           'application/json': {
-            schema: {type: 'array', items: {'x-ts-type': Contact}},
+            schema: {
+              type: 'array',
+              items: getModelSchemaRef(Contact, {includeRelations: true}),
+            },
           },
         },
       },
@@ -68,7 +84,7 @@ export class ContactController {
     @param.query.object('filter', getFilterSchemaFor(Contact))
     filter?: Filter<Contact>,
   ): Promise<Contact[]> {
-    return await this.contactRepository.find(filter);
+    return this.contactRepository.find(filter);
   }
 
   @patch('/contacts', {
@@ -80,23 +96,38 @@ export class ContactController {
     },
   })
   async updateAll(
-    @requestBody() contact: Contact,
+    @requestBody({
+      content: {
+        'application/json': {
+          schema: getModelSchemaRef(Contact, {partial: true}),
+        },
+      },
+    })
+    contact: Contact,
     @param.query.object('where', getWhereSchemaFor(Contact))
     where?: Where<Contact>,
   ): Promise<Count> {
-    return await this.contactRepository.updateAll(contact, where);
+    return this.contactRepository.updateAll(contact, where);
   }
 
   @get('/contacts/{id}', {
     responses: {
       '200': {
         description: 'Contact model instance',
-        content: {'application/json': {schema: {'x-ts-type': Contact}}},
+        content: {
+          'application/json': {
+            schema: getModelSchemaRef(Contact, {includeRelations: true}),
+          },
+        },
       },
     },
   })
-  async findById(@param.path.number('id') id: number): Promise<Contact> {
-    return await this.contactRepository.findById(id);
+  async findById(
+    @param.path.number('id') id: number,
+    @param.query.object('filter', getFilterSchemaFor(Contact))
+    filter?: Filter<Contact>,
+  ): Promise<Contact> {
+    return this.contactRepository.findById(id, filter);
   }
 
   @patch('/contacts/{id}', {
@@ -108,7 +139,14 @@ export class ContactController {
   })
   async updateById(
     @param.path.number('id') id: number,
-    @requestBody() contact: Contact,
+    @requestBody({
+      content: {
+        'application/json': {
+          schema: getModelSchemaRef(Contact, {partial: true}),
+        },
+      },
+    })
+    contact: Contact,
   ): Promise<void> {
     await this.contactRepository.updateById(id, contact);
   }
@@ -116,7 +154,7 @@ export class ContactController {
   @put('/contacts/{id}', {
     responses: {
       '204': {
-        description: 'contact PUT success',
+        description: 'Contact PUT success',
       },
     },
   })

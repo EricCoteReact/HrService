@@ -7,7 +7,7 @@ import {
 import {RepositoryMixin} from '@loopback/repository';
 import {RestApplication} from '@loopback/rest';
 import {ServiceMixin} from '@loopback/service-proxy';
-import * as path from 'path';
+import path from 'path';
 import {MySequence} from './sequence';
 
 export class HrserviceApplication extends BootMixin(
