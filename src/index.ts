@@ -1,10 +1,10 @@
-import {HrserviceApplication} from './application';
+import {HrServiceApplication} from './application';
 import {ApplicationConfig} from '@loopback/core';
 
-export {HrserviceApplication};
+export {HrServiceApplication};
 
 export async function main(options: ApplicationConfig = {}) {
-  const app = new HrserviceApplication(options);
+  const app = new HrServiceApplication(options);
   await app.boot();
   await app.start();
 

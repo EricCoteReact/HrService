@@ -1,20 +1,18 @@
 import {Entity, model, property} from '@loopback/repository';
 
-@model({settings: {strict: false}})
+@model()
 export class Contact extends Entity {
   @property({
     type: 'number',
     id: true,
     generated: true,
-    required: true,
   })
-  id: number;
+  id?: number;
 
   @property({
     type: 'string',
-    required: true,
   })
-  firstName: string;
+  firstName?: string;
 
   @property({
     type: 'string',
@@ -23,14 +21,10 @@ export class Contact extends Entity {
 
   @property({
     type: 'string',
+    required: true,
   })
-  email?: string;
+  email: string;
 
-  // Define well-known properties here
-
-  // Indexer property to allow additional data
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  [prop: string]: any;
 
   constructor(data?: Partial<Contact>) {
     super(data);

@@ -23,7 +23,7 @@ import {ContactRepository} from '../repositories';
 export class ContactController {
   constructor(
     @repository(ContactRepository)
-    public contactRepository: ContactRepository,
+    public contactRepository : ContactRepository,
   ) {}
 
   @post('/contacts', {
@@ -59,8 +59,7 @@ export class ContactController {
     },
   })
   async count(
-    @param.query.object('where', getWhereSchemaFor(Contact))
-    where?: Where<Contact>,
+    @param.query.object('where', getWhereSchemaFor(Contact)) where?: Where<Contact>,
   ): Promise<Count> {
     return this.contactRepository.count(where);
   }
@@ -81,8 +80,7 @@ export class ContactController {
     },
   })
   async find(
-    @param.query.object('filter', getFilterSchemaFor(Contact))
-    filter?: Filter<Contact>,
+    @param.query.object('filter', getFilterSchemaFor(Contact)) filter?: Filter<Contact>,
   ): Promise<Contact[]> {
     return this.contactRepository.find(filter);
   }
@@ -104,8 +102,7 @@ export class ContactController {
       },
     })
     contact: Contact,
-    @param.query.object('where', getWhereSchemaFor(Contact))
-    where?: Where<Contact>,
+    @param.query.object('where', getWhereSchemaFor(Contact)) where?: Where<Contact>,
   ): Promise<Count> {
     return this.contactRepository.updateAll(contact, where);
   }
@@ -124,8 +121,7 @@ export class ContactController {
   })
   async findById(
     @param.path.number('id') id: number,
-    @param.query.object('filter', getFilterSchemaFor(Contact))
-    filter?: Filter<Contact>,
+    @param.query.object('filter', getFilterSchemaFor(Contact)) filter?: Filter<Contact>
   ): Promise<Contact> {
     return this.contactRepository.findById(id, filter);
   }
