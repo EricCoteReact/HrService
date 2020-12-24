@@ -11,8 +11,8 @@ RUN apk update && apk upgrade && apk add git
 
 COPY . .
 
-# RUN npm install
-# RUN npm run build
+RUN npm install
+RUN npm run build
 
 
 # Bind to all network interfaces so that it can be mapped to the host OS
