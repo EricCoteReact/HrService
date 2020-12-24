@@ -9,7 +9,7 @@ FROM node:lts-alpine
 RUN apk update && apk upgrade && apk add git
 
 
-COPY . .
+# COPY . .
 
 RUN npm install
 RUN npm run build
